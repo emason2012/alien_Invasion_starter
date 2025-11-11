@@ -1,3 +1,10 @@
+
+'''
+Alien Invasion
+Ethan Mason
+11/11
+this code is respnsible for making the bullet that is fried from arsenal as well as controlling bullet speed and direction
+'''
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING

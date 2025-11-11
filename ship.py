@@ -1,3 +1,9 @@
+'''
+Alien Invasion
+Ethan Mason
+11/11
+this code is responsible for placing the ship on screen as well as what boundries it has with movement and size
+'''
 import pygame
 from typing import TYPE_CHECKING
 
@@ -6,7 +12,7 @@ if TYPE_CHECKING:
     from arsenal import Arsenal
 
 class Ship:
-    
+    #all code for the ship being on screen as well as its movements and boundries
     
     
     def __init__(self, game: 'AlienInvasion', arsenal: 'Arsenal') -> None:
@@ -33,6 +39,7 @@ class Ship:
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
+        #puts ship speed in control of the setting its assigned to as well as limits the ship to boundries
         temp_speed = self.settings.ship_speed
         if self.moving_right and self.rect.right < self.boundries.right:
             self.x += temp_speed

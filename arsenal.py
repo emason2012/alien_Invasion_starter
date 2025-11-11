@@ -1,3 +1,10 @@
+'''
+Alien Invasion
+Ethan Mason
+11/11
+this code is respnsible for the arsenal for the ship in which it creates the laser, makes sure there arent too many rounds on the 
+screen depending on what the setting is set for and removing off screen bullets
+'''
 from bullet import Bullet
 import pygame
 from typing import TYPE_CHECKING

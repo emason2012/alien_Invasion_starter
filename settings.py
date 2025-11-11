@@ -1,3 +1,10 @@
+'''
+Alien Invasion
+Ethan Mason
+11/11
+this code is respnsible for keeping all the settings for the different files in one place such as screen size, images for the different sprites,
+ship and bullet speed and size, as well as how many bullets there are. 
+'''
 from pathlib import Path
 class Settings:
 
@@ -20,4 +27,3 @@ class Settings:
         self.bullet_w = 25
         self.bullet_h = 80
         self.bullet_amount = 5
-        

@@ -1,3 +1,10 @@
+'''
+Alien Invasion
+Ethan Mason
+11/11
+this code is respnsible for running the game Alien Invasion in which you are a rocket ship shootingat the different aliens coming down towards you on the screen
+'''
+
 import sys
 import pygame
 from settings import Settings
@@ -5,6 +12,7 @@ from ship import Ship
 from arsenal import Arsenal
 
 class AlienInvasion:
+    #controls base functions of the game such as display, sounds, and fps
     def __init__(self) -> None:
         pygame.init()
         self.settings = Settings()
@@ -38,11 +46,13 @@ class AlienInvasion:
             self.clock.tick(self.settings.FPS)
 
     def _update_screen(self) -> None:
+        #updates the screen for ship location
         self.screen.blit(self.bg, (0,0))
         self.ship.draw()
         pygame.display.flip()
 
     def _check_events(self) -> None:
+        #does initial check for any input from a keyboard such as q to quit or arrow keys for moveement
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
@@ -55,6 +65,7 @@ class AlienInvasion:
 
 
     def _check_keyup_events(self, event) -> None:
+        #checks for when a key is lifted after beubg pressed/ not being pressed
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
@@ -62,6 +73,7 @@ class AlienInvasion:
 
 
     def _check_keydown_events(self, event) -> None:
+        #checks for when a key is pressed down
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
