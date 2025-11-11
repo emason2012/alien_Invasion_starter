@@ -22,12 +22,12 @@ class Ship:
         self.boundries = self.screen.get_rect()
 
         self.image = pygame.image.load(self.settings.ship_file)
-        self.image = pygame.transform.scale(self.image, 
+        self.image = pygame.transform.rotate(pygame.transform.scale(self.image, 
             (self.settings.ship_w,self.settings.ship_h)
-            )
+            ), -90)
         
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.boundries.midbottom
+        self.rect.midleft = self.boundries.midleft
         self.moving_right = False
         self.moving_left = False
         self.x = float(self.rect.x)
@@ -41,12 +41,11 @@ class Ship:
     def _update_ship_movement(self):
         #puts ship speed in control of the setting its assigned to as well as limits the ship to boundries
         temp_speed = self.settings.ship_speed
-        if self.moving_right and self.rect.right < self.boundries.right:
-            self.x += temp_speed
-        if self.moving_left and self.rect.left > self.boundries.left:
-            self.x -= temp_speed
+        if self.moving_right and self.rect.top > self.boundries.top:
+            self.rect.y -= temp_speed
+        if self.moving_left and self.rect.bottom < self.boundries.bottom:
+            self.rect.y += temp_speed
 
-        self.rect.x = self.x
 
     def draw(self) -> None:
         self.arsenal.draw()
