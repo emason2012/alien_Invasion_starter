@@ -24,6 +24,7 @@ class Alien(Sprite):
         self.image = pygame.transform.scale(self.image, 
             (self.settings.alien_w, self.settings.alien_h)
             )
+        self.image = pygame.transform.rotate(self.image, 90)
         
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -37,12 +38,12 @@ class Alien(Sprite):
 
         
         
-        self.x += temp_speed * self.fleet.fleet_direction
-        self.rect.x = self.x
+        self.y += temp_speed * self.fleet.fleet_direction
         self.rect.y = self.y
+        self.rect.x = self.x
 
     def check_edges(self):
-        return (self.rect.right >= self.boundries.right or self.rect.left <= self.boundries.left)
+        return (self.rect.bottom >= self.boundries.bottom or self.rect.top <= self.boundries.top)
 
     def draw_alien(self):
         self.screen.blit(self.image, self.rect)
