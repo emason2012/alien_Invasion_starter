@@ -44,22 +44,26 @@ class AlienFleet:
                 self._create_alien(current_x, current_y)
 
     def calculate_offsets(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
+        half_screen = self.settings.screen_h // 2
+        fleet_horizontal_space = fleet_w * alien_w
         fleet_vertical_space = fleet_h * alien_h
-        screen_h = self.settings.screen_h
+        x_offset = int((screen_w - fleet_horizontal_space)//2)
+        y_offset = int((half_screen - fleet_vertical_space) // 2)
+        return x_offset,y_offset
 
-        x_offset = alien_w  
-        y_offset = int((screen_h - fleet_vertical_space) // 2)
-
-        return x_offset, y_offset
-    
     def calculate_fleet_size(self, alien_w, screen_w, alien_h, screen_h):
-        # use roughly the left third of the screen for aliens
-        available_space_x = screen_w // 3
-        fleet_w = int(available_space_x // alien_w)
+        fleet_w = (screen_w//alien_w)
+        fleet_h = ((screen_h / 2) // alien_h)
 
-        # use almost the full height, leaving a small margin
-        available_space_y = screen_h - 2 * alien_h
-        fleet_h = int(available_space_y // alien_h)
+        if fleet_w % 2 == 0:
+            fleet_w -= 1
+        else:
+            fleet_w -= 2
+
+        if fleet_h % 2 == 0:
+            fleet_h -= 1
+        else:
+            fleet_h -= 2
 
         return int(fleet_w), int(fleet_h)
 
@@ -78,7 +82,7 @@ class AlienFleet:
         
     def _drop_alien_fleet(self):
         for alien in self.fleet:
-            alien.x += self.fleet_drop_speed
+            alien.y += self.fleet_drop_speed
     
     def update_fleet(self):
         self._check_fleet_edges()
@@ -96,7 +100,7 @@ class AlienFleet:
     def check_fleet_bottom(self):
         alien: Alien
         for alien in self.fleet:
-            if alien.rect.right >= self.settings.screen_w:
+            if alien.rect.bottom >= self.settings.screen_h:
                 return True
         return False
         

@@ -116,17 +116,17 @@ class AlienInvasion:
 
     def _check_keyup_events(self, event) -> None:
         #checks for when a key is lifted after beubg pressed/ not being pressed
-        if event.key == pygame.K_UP:
+        if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
-        elif event.key == pygame.K_DOWN:
+        elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
 
     def _check_keydown_events(self, event) -> None:
         #checks for when a key is pressed down
-        if event.key == pygame.K_UP:
+        if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
-        elif event.key == pygame.K_DOWN:
+        elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_SPACE:
             if self.ship.fire():
