@@ -19,7 +19,7 @@ class Settings:
         self.ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2(no bg).png'
         self.ship_w = 40
         self.ship_h = 60
-        self.ship_speed = 5
+        self.ship_speed = 7
         self.starting_ship_ammount = 3
 
         self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'laserBlast.png'
@@ -36,3 +36,12 @@ class Settings:
         self.fleet_speed = 2
         self.fleet_direction = 1
         self.fleet_drop_speed = 40
+
+        self.button_w = 200
+        self.button_h = 50
+        self.button_color = (0,135,50)
+
+        self.text_color = (255,255,255)
+        self.button_font_size = 48
+        self.HUD_font_size = 20
+        self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
