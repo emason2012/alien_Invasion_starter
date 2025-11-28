@@ -44,13 +44,14 @@ class Settings:
 
     def initialize_dynamic_settings(self):
         self.ship_speed = 7
-        self.starting_ship_ammount = 3
+        self.starting_ship_count = 3
         self.bullet_speed = 20
         self.bullet_w = 25
         self.bullet_h = 80
         self.bullet_amount = 5
         self.fleet_speed = 2
         self.fleet_drop_speed = 40
+        self.alien_points = 50
 
     def increase_difficulty(self):
         self.ship_speed *= self.difficulty_scale
